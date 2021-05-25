@@ -1,0 +1,13 @@
+{
+    "watchForFileChanges": false,
+    "defaultCommandTimeout": 7000,
+    "reporter": "mochawesome",
+    "env":{
+    "url":"https://clickup.com",
+    "persona": "Admin",
+    "usernameAdmin":"priyandscot@gmail.com",
+    "passwordAdmin":"SivaPriyan@05",
+    "listName":"Test List"
+    },
+    "uncaught":"exception"
+}
