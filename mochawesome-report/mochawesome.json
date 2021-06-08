@@ -1,0 +1,119 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2021-06-08T07:51:35.902Z",
+    "end": "2021-06-08T07:53:16.291Z",
+    "duration": 100389,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "a0cc62e4-8910-4ec2-adef-a9a59beabf58",
+      "title": "",
+      "fullFile": "cypress/integration/CreateTaskTest.ts",
+      "file": "cypress/integration/CreateTaskTest.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d03dbd62-06d9-410d-9538-a3f07d747f25",
+          "title": "clickup New item - Test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Clickup Login - Test",
+              "fullTitle": "clickup New item - Test Clickup Login - Test",
+              "timedOut": null,
+              "duration": 66240,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "loginPage.navigate(Cypress.env('url'));\nloginPage.clickMenu();\nloginPage.clickLoginMenu();\nloginPage.enterUsername(Cypress.env('usernameAdmin'));\nloginPage.enterPassword(Cypress.env('passwordAdmin'));\nloginPage.clickLogin();\nhomepage.verifyTasktableIsLoaded();\nhomepage.validateSideBar();",
+              "err": {},
+              "uuid": "bf3400c3-cdb7-4241-a275-6089d8946c51",
+              "parentUUID": "d03dbd62-06d9-410d-9538-a3f07d747f25",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Clickup NewTask - Test",
+              "fullTitle": "clickup New item - Test Clickup NewTask - Test",
+              "timedOut": null,
+              "duration": 30709,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "homepage.clickNewTaskbutton();\nhomepage.validateNewTaskPageIsDisplayed();\nhomepage.enterTaskName(\"Task123\");\nhomepage.selectTheCategoryItem(Cypress.env('listName'));\nhomepage.enterTaskDescription(\"This is a new Task\");\nhomepage.clickSelectUserAssignment(\"Me\");\nhomepage.clickCreateTask();",
+              "err": {},
+              "uuid": "be922056-cb70-4e13-8aae-e64ee2891921",
+              "parentUUID": "d03dbd62-06d9-410d-9538-a3f07d747f25",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "bf3400c3-cdb7-4241-a275-6089d8946c51",
+            "be922056-cb70-4e13-8aae-e64ee2891921"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 96949,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.2"
+    },
+    "marge": {
+      "options": null,
+      "version": "5.2.0"
+    }
+  }
+}

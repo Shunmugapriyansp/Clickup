@@ -13,6 +13,7 @@ describe('clickup New item - Test', function (){
         loginPage.enterUsername(Cypress.env('usernameAdmin'))
         loginPage.enterPassword(Cypress.env('passwordAdmin'))
         loginPage.clickLogin()
+        homepage.verifyTasktableIsLoaded();
         homepage.validateSideBar()
     })
     it('Clickup NewTask - Test', function () {
@@ -25,12 +26,20 @@ describe('clickup New item - Test', function (){
         homepage.clickCreateTask();    
     })
 
-    it('Clickup Logout- Test', function () {
-        homepage.clickLogout();
+    
+    
+    /* it('Clickup Update the New Task in List', function () {
+        //homepage.clickProjectListItems("Space,Quick Start,Test List")
+        
+        homepage.clickTask("Task123");
+        homepage.verifyTaskName("Task123");
+        
+     })
+
+   it('Clickup Logout- Test', function () {
+
         loginPage.validateLoginPageIsdisplayed()
     }) 
-    
-    /* it('Clickup Update the New Task in List', function () {})
-    it('Clickup Validate the Updated Task in List ', function () {})
-     */
+    it('Clickup Validate the Updated Task in List ', function () {})*/
+     
 })

@@ -15,6 +15,53 @@ export class HomePage {
     homePage_NewTaskTitle = '.cdk-textarea-autosize'
     homePage_UserListItem = '.user-list-item__name'
     homePage_TaskName = 'textarea'
+    homePage_Projectlist = 'cu2-project-list-bar-item a'
+    homePage_TaskListtable = '.cdk-drop-list.cu-task-list__rows'
+    homePage_TaskLink= 'a.cu-task-row-main__link'
+    homePage_Tabletitle = '.cu-list-group__header'
+    homePage_TaskViewName= '.task-name__overlay'
+    
+
+    verifyTasktableIsLoaded(){
+
+        cy.get(this.homePage_TaskListtable,{ timeout: 60000 }).should('have.length.at.least',1)
+    } 
+    /**
+     * 
+     * @param taskName 
+     */
+
+     verifyTaskName(taskName:string){
+        cy.get(this.homePage_TaskViewName).should('have.text',taskName)
+     }
+    /**
+     * 
+     * @param heirarchy 
+     */
+
+    clickProjectListItems(heirarchy: string) {
+        let heirarchyItems = heirarchy.split(",")
+
+        heirarchyItems.forEach( (iteminlist) => {
+            cy.get(this.homePage_Projectlist).each( ($e, index) => {
+                const listItemText: string = $e.text()
+                console.log (listItemText)
+                if (listItemText.trim() == iteminlist)
+                    cy.wrap($e).click()
+            })
+        })
+    }
+
+    clickTask(taskName:string){
+        cy.get(this.homePage_TaskLink, {timeout: 60000}).each(($e,index)=>{
+            debugger;
+            console.log($e.text())
+            if($e.text()==taskName){
+                cy.wrap($e).click();
+            }
+            })
+    }
+    
     /**
      * @description launch a 
      * @param url 
@@ -53,7 +100,7 @@ export class HomePage {
     */
     enterTaskName(taskName: string) {
 
-    
+
         cy.get(this.homePage_TaskName).type(taskName)
     }
 

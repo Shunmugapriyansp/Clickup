@@ -12,14 +12,14 @@ export class LoginPage {
    */
   navigate(url: string) {
     cy.visit(url,)
-    cy.intercept(
+    /*cy.intercept(
       {
         // this RegExp matches any URL beginning with 'http://api.example.com/' and ending with '/edit' or '/save'
         url: /^http:\/\/api\.clickup\.com\//,
         headers: {
           "Authorization": "pk_10239583_XWVZ0KAU74OTU16QFM94MRRHBT1Z5RBU",
         },
-      })
+      })*/
   }
 
   /**
@@ -47,7 +47,9 @@ export class LoginPage {
   /**
    * @description Click on Login button
    */
-  clickLogin() { cy.get(this.loginPage_LoginButton).click() }
+  clickLogin() { cy.get(this.loginPage_LoginButton).click()
+    .wait(30000)
+   }
 
   validateLoginPageIsdisplayed() { cy.get(this.loginPage_LoginButton).should('exist') }
 
