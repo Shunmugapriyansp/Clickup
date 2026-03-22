@@ -1,0 +1,30 @@
+{
+  "chat_api_gpt4o": {
+    "p50_latency_ms": 1200,
+    "p95_latency_ms": 4000,
+    "p99_latency_ms": 8000,
+    "min_tokens_per_second": 15.0,
+    "max_cost_per_1k_tokens_usd": 0.02
+  },
+  "chat_api_gpt4o_mini": {
+    "p50_latency_ms": 600,
+    "p95_latency_ms": 2000,
+    "p99_latency_ms": 4000,
+    "min_tokens_per_second": 30.0,
+    "max_cost_per_1k_tokens_usd": 0.001
+  },
+  "streaming_chat": {
+    "p50_latency_ms": 500,
+    "p95_latency_ms": 1500,
+    "p99_latency_ms": 3000,
+    "min_tokens_per_second": 20.0,
+    "max_cost_per_1k_tokens_usd": 0.02
+  },
+  "agent_workflow": {
+    "p50_latency_ms": 3000,
+    "p95_latency_ms": 10000,
+    "p99_latency_ms": 20000,
+    "min_tokens_per_second": 10.0,
+    "max_cost_per_1k_tokens_usd": 0.05
+  }
+}
