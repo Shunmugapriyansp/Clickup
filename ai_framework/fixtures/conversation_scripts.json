@@ -1,0 +1,69 @@
+[
+  {
+    "name": "task_creation_happy_path",
+    "description": "User asks AI to create a task end-to-end",
+    "system_prompt": "You are a ClickUp AI assistant. Help users manage their tasks.",
+    "turns": [
+      {
+        "turn": 1,
+        "user": "Can you create a task called 'Fix login bug' assigned to me with high priority?",
+        "assert_topics": ["task", "create", "login"],
+        "must_not_contain": ["error", "cannot", "unable"]
+      },
+      {
+        "turn": 2,
+        "user": "Set the due date to next Friday.",
+        "assert_topics": ["due date", "friday"],
+        "must_not_contain": ["error"]
+      },
+      {
+        "turn": 3,
+        "user": "Add a description: This bug causes users to be logged out on mobile.",
+        "assert_topics": ["description", "added"],
+        "must_not_contain": ["error"]
+      },
+      {
+        "turn": 4,
+        "user": "Great, confirm the task details.",
+        "assert_topics": ["fix login bug", "high priority"],
+        "expected_end_state": "resolved"
+      }
+    ]
+  },
+  {
+    "name": "clarification_flow",
+    "description": "AI asks for clarification when request is ambiguous",
+    "system_prompt": "You are a ClickUp AI assistant.",
+    "turns": [
+      {
+        "turn": 1,
+        "user": "Create a task.",
+        "assert_topics": ["name", "what", "task"],
+        "expected_end_state": "clarification"
+      }
+    ]
+  },
+  {
+    "name": "escalation_flow",
+    "description": "AI escalates to human when it cannot fulfil the request",
+    "system_prompt": "You are a ClickUp AI assistant. Escalate to human support for billing issues.",
+    "turns": [
+      {
+        "turn": 1,
+        "user": "I need a refund for my subscription.",
+        "assert_topics": ["support", "team", "help"],
+        "expected_end_state": "escalated"
+      }
+    ]
+  },
+  {
+    "name": "loop_detection_test",
+    "description": "Sends repetitive questions to trigger loop detection",
+    "system_prompt": "You are a ClickUp AI assistant.",
+    "turns": [
+      { "turn": 1, "user": "What is the status of my tasks?", "assert_topics": [] },
+      { "turn": 2, "user": "What is the status of my tasks?", "assert_topics": [] },
+      { "turn": 3, "user": "What is the status of my tasks?", "assert_topics": [] }
+    ]
+  }
+]
