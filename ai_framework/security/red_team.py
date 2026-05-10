@@ -19,7 +19,7 @@ from typing import List, Optional
 from api.ai_client import AIClient
 from core.config import get_config
 from core.logger import get_logger
-from core.types import OWASPCategory, SecurityResult, SecuritySeverity
+from core.types import Message, OWASPCategory, SecurityResult, SecuritySeverity
 from security.injection_checker import run_security_check
 
 log = get_logger(__name__)
@@ -60,9 +60,7 @@ class RedTeamRunner:
 
             messages = []
             if self._system_prompt:
-                from core.types import Message
                 messages.append(Message(role="system", content=self._system_prompt))
-            from core.types import Message
             messages.append(Message(role="user", content=payload_text))
 
             try:

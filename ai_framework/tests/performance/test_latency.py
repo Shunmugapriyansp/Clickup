@@ -7,6 +7,7 @@ Asserts against SLO thresholds defined in config / baselines.
 import pytest
 
 from api.ai_client import AIClient
+from core.types import Message
 from performance.benchmarks import get_baseline
 from performance.latency_tracker import LatencyTracker
 from reporting.performance_report import save_performance_report
@@ -49,9 +50,7 @@ class TestLatency:
     def test_streaming_ttfb(self, ai_client: AIClient):
         """Streaming time-to-first-byte must be < 2 seconds."""
         response = ai_client.chat_stream(
-            messages=[__import__("core.types", fromlist=["Message"]).Message(
-                role="user", content="Briefly describe ClickUp."
-            )]
+            messages=[Message(role="user", content="Briefly describe ClickUp.")]
         )
         assert response.ttfb_ms < 2000, (
             f"Streaming TTFB {response.ttfb_ms:.0f}ms exceeded 2000ms threshold."
