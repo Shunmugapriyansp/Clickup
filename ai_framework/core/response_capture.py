@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import json
 import time
-from typing import Any, Dict, Generator, Iterator, List, Optional
+from typing import Any, Callable, Dict, Generator, Iterator, List, Optional
 
 from core.config import get_config
 from core.logger import get_logger
@@ -85,7 +85,7 @@ def capture_response(raw: Dict[str, Any], latency_ms: float = 0.0) -> LLMRespons
 def buffer_streaming_response(
     event_iterator: Iterator[str],
     model: str = "",
-    ttfb_callback: Optional[callable] = None,
+    ttfb_callback: Optional[Callable[[float], None]] = None,
 ) -> LLMResponse:
     """
     Consume an SSE stream (lines of 'data: {...}') and assemble one LLMResponse.
